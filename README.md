@@ -1,4 +1,6 @@
-# mobile-study
+# VantStudy
+
+本仓库是学习Vant练手库，如果需要使用，则需要按照以下方法。
 
 ## Project setup
 ```
