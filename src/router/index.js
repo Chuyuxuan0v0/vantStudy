@@ -1,8 +1,11 @@
-import { hasOwnMetadata } from 'core-js/fn/reflect'
+
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Login from '../views/Login.vue'
-
+import Home from '../views/Home.vue'
+import Welcome from '../components/Welcome.vue'
+import Users from '../components/Users.vue'
+import Rights from '../components/Rights.vue'
 Vue.use(VueRouter)
 
 const routes = [
@@ -41,30 +44,30 @@ const router = new VueRouter({
 
 
 
-//挂载一个路由导航守卫
-router.beforeEach((to, from, next) => {
-  const tokenStr = window.sessionStorage.getItem('token');
-  /*to 将要访问的路径
-  from 代表从哪个路径跳转而来
-  next 表示放行函数 语法： next()  or  next('/login') 强制跳转
-  */
-  //通过判断token是否登录，不过这个还是有bug，用户可以伪造token
+// //挂载一个路由导航守卫
+// router.beforeEach((to, from, next) => {
+//   const tokenStr = window.sessionStorage.getItem('token');
+//   /*to 将要访问的路径
+//   from 代表从哪个路径跳转而来
+//   next 表示放行函数 语法： next()  or  next('/login') 强制跳转
+//   */
+//   //通过判断token是否登录，不过这个还是有bug，用户可以伪造token
 
-  if (tokenStr) {
-    console.log("tokenStr不为空，为：", tokenStr);
-    return next();
-  }
-  else {
+//   if (tokenStr) {
+//     console.log("tokenStr不为空，为：", tokenStr);
+//     return next();
+//   }
+//   else {
 
-    console.log("tokenStr为空");
+//     console.log("tokenStr为空");
 
-    //如果是登录页面路径，就直接next()
-    if (to.path === '/login') {
-      return next();
-    } else {
-      return next('/login');
-    }
-  }
-});
+//     //如果是登录页面路径，就直接next()
+//     if (to.path === '/login') {
+//       return next();
+//     } else {
+//       return next('/login');
+//     }
+//   }
+// });
 
 export default router
